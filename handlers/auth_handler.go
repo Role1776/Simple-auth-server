@@ -17,7 +17,6 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 func ChekLogin(u models.Login) string {
 	if models.LogUser.Username != u.Username || models.LogUser.Password != u.Password {
-		fmt.Println("NOT CORRECT")
 		err := "NOT CORRECT"
 		return err
 	}
