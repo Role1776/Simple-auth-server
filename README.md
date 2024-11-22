@@ -1,36 +1,50 @@
-# Simple REST API Server with JWT Authentication
+go-rest-api: Simple REST API Server with JWT Authentication
+This is a basic REST API server written in Go (Golang). It was created as a learning project to demonstrate fundamental skills in building web servers, working with JSON, handling HTTP requests, and implementing JWT-based authentication.
 
-This is a **basic** REST API server written in Go (Golang). It was created as a learning project to demonstrate fundamental skills in building web servers, working with JSON, handling HTTP requests, and implementing JWT-based authentication.
+⚠️ Note: This is not a production-ready application but a simple demonstration of RESTful API principles. The focus is on clean code organization and modular structure rather than advanced features or optimizations.
 
-> ⚠️ **Note:** This is not a production-ready application but a simple demonstration of RESTful API principles. The focus is on clean code organization and modular structure rather than advanced features or optimizations.
+Features
+User Management:
+Add, retrieve, update, and delete user records (CRUD operations).
 
-## Features
+JWT Authentication:
+Secure endpoints using JSON Web Tokens (JWT).
 
-- **User Management**: 
-  - Add, retrieve, update, and delete user records (CRUD operations).
-- **JWT Authentication**: 
-  - Secure endpoints using JSON Web Tokens (JWT).
-- **Basic Routing**: 
-  - Organized routing using the `gorilla/mux` router.
+Basic Routing:
+Organized routing using the gorilla/mux router.
 
-## Project Structure
-
+Project Structure
 The project is divided into clear modules to follow good practices:
 
-awesomeProject/ │ ├── main.go # Entry point of the application ├── handlers/ # Request handlers for API endpoints │ ├── user_handler.go # Handlers for user CRUD operations │ ├── auth_handler.go # Handlers for login and authentication │ ├── middleware/ # Middleware logic │ └── auth_middleware.go # JWT authentication middleware │ ├── models/ # Data structures and in-memory storage │ ├── user.go # User and book models │ ├── auth.go # Login data and predefined user │ ├── utils/ # Utility functions │ └── jwt_utils.go # JWT generation logic │ └── README.md # Documentation for the project
+go-rest-api/
+│
+├── main.go                    # Entry point of the application
+│
+├── handlers/                  # Request handlers for API endpoints
+│   ├── user_handler.go        # Handlers for user CRUD operations
+│   └── auth_handler.go        # Handlers for login and authentication
+│
+├── middleware/                # Middleware logic
+│   └── auth_middleware.go     # JWT authentication middleware
+│
+├── models/                    # Data structures and in-memory storage
+│   ├── user.go                # User and book models
+│   └── auth.go                # Login data and predefined user
+│
+├── utils/                     # Utility functions
+│   └── jwt_utils.go           # JWT generation logic
+│
+└── README.md                  # Documentation for the project
+Endpoints
+Public Endpoints
+POST /login
+Authenticate a user and return a JWT token.
+Payload:
 
-
-## Endpoints
-
-### Public Endpoints
-1. `POST /login`  
-   Authenticate a user and return a JWT token.  
-   **Payload**:
-   ```json
-   {
-       "username": "string",
-       "password": "string"
-   }
+{
+    "username": "string",
+    "password": "string"
+}
 Response:
 
 On success: Token string.
@@ -68,8 +82,8 @@ Go installed (1.20+ recommended).
 Steps
 Clone the repository:
 
-git clone https://github.com/your_username/awesomeProject.git
-cd awesomeProject
+git clone https://github.com/your_username/go-rest-api.git
+cd go-rest-api
 Run the server:
 
 go run main.go
