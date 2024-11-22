@@ -9,7 +9,7 @@ import (
 )
 
 func Login(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-type", "json/application")
+	w.Header().Set("Content-Type", "application/json")
 	var u models.Login
 	_ = json.NewDecoder(r.Body).Decode(&u)
 	json.NewEncoder(w).Encode(ChekLogin(u))
