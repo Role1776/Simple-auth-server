@@ -17,7 +17,7 @@ This is a **basic** REST API server written in Go (Golang). It was created as a 
 
 The project is divided into clear modules to follow good practices:
 
-go-rest-api/ │ ├── main.go # Entry point of the application ├── handlers/ # Request handlers for API endpoints │ ├── user_handler.go # Handlers for user CRUD operations │ ├── auth_handler.go # Handlers for login and authentication │ ├── middleware/ # Middleware logic │ └── auth_middleware.go # JWT authentication middleware │ ├── models/ # Data structures and in-memory storage │ ├── user.go # User and book models │ ├── auth.go # Login data and predefined user │ ├── utils/ # Utility functions │ └── jwt_utils.go # JWT generation logic 
+go-rest-api/ │ ├── main.go # Entry point of the application ├── handlers/ # Request handlers for API endpoints │ ├── user_handler.go # Handlers for user CRUD operations │ ├── auth_handler.go # Handlers for login and authentication │ ├── middleware/ # Middleware logic │ └── auth_middleware.go # JWT authentication middleware │ ├── models/ # Data structures and in-memory storage │ ├── user.go # User and book models │ ├── auth.go # Login data and predefined user │ ├── utils/ # Utility functions │ └── jwt.go # JWT generation logic 
 
 
 ## Endpoints
