@@ -27,7 +27,7 @@ func GetUsersById(w http.ResponseWriter, r *http.Request) {
 }
 
 func CreateUser(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-type", "json/application")
+	w.Header().Set("Content-Type", "application/json)
 	var us models.User
 	_ = json.NewDecoder(r.Body).Decode(&us)
 	models.Users = append(models.Users, us)
