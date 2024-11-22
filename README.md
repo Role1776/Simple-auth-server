@@ -1,4 +1,4 @@
-go-rest-api: Simple REST API Server with JWT Authentication
+Simple REST API Server with JWT Authentication
 This is a basic REST API server written in Go (Golang). It was created as a learning project to demonstrate fundamental skills in building web servers, working with JSON, handling HTTP requests, and implementing JWT-based authentication.
 
 ⚠️ Note: This is not a production-ready application but a simple demonstration of RESTful API principles. The focus is on clean code organization and modular structure rather than advanced features or optimizations.
@@ -82,7 +82,7 @@ Go installed (1.20+ recommended).
 Steps
 Clone the repository:
 
-git clone https://github.com/your_username/go-rest-api.git
+git clone https://github.com/Role1776/go-rest-api.git
 cd go-rest-api
 Run the server:
 
@@ -100,6 +100,3 @@ Add unit tests to improve code quality.
 Add Docker support for easier deployment.
 Purpose
 This project is intentionally simple and serves as a demonstration of basic concepts. It is meant as a starting point for more advanced server development.
-
-
-
