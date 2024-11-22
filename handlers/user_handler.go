@@ -35,7 +35,7 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 }
 
 func DeleteUsers(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("content-type", "json/application")
+	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
 	for i, item := range models.Users {
 		if item.Id == params["id"] {
@@ -47,7 +47,7 @@ func DeleteUsers(w http.ResponseWriter, r *http.Request) {
 }
 
 func PutUsers(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-type", "json/application")
+	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
 	for i, item := range models.Users {
 		if item.Id == params["id"] {
