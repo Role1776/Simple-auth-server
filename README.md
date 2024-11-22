@@ -59,6 +59,7 @@ Payload:
         "year": "number"
     }
 }
+
 PUT /usersBook/{id}
 Update an existing user by ID.
 
