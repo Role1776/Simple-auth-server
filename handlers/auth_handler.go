@@ -15,8 +15,8 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 	err := json.NewDecoder(r.Body).Decode(&auth)
 	if err != nil {
-		w.WriteHeader(http.StatusBadRequest)
-		return
+		http.Error(w, "Invalid JSON", http.StatusBadRequest)
+		
 	}
 	json.NewEncoder(w).Encode(checkLogin(auth))
 }
