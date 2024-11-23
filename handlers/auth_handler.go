@@ -2,32 +2,33 @@ package handlers
 
 import (
 	"encoding/json"
-	"fmt"
 	"go-rest-api/models"
 	"go-rest-api/utils"
+	"log"
 	"net/http"
 )
 
 func Login(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	var u models.Login
-	_ = json.NewDecoder(r.Body).Decode(&u)
-	json.NewEncoder(w).Encode(ChekLogin(u))
+	w.Header().Set("content-type", "application/json")
+
+	var auth models.Login
+
+	err := json.NewDecoder(r.Body).Decode(&auth)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	json.NewEncoder(w).Encode(checkLogin(auth))
 }
 
-func ChekLogin(u models.Login) string {
-	if models.LogUser.Username != u.Username || models.LogUser.Password != u.Password {
-		err := "NOT CORRECT"
-		return err
+func checkLogin(auth models.Login) string {
+	if auth.Username != models.LogUser.Password || auth.Password != models.LogUser.Password {
+		return "Invalid credentials"
 	}
 
 	validToken, err := utils.GenerateJWT()
-	val := "Your Token:" + validToken
-	fmt.Println(validToken)
-
 	if err != nil {
-		fmt.Println(err)
+		log.Println("Error generate token.", err)
 	}
-
-	return val
+	return validToken
 }
