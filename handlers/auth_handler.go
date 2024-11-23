@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"go-rest-api/models"
 	"go-rest-api/utils"
-	"log"
 	"net/http"
 )
 
@@ -28,7 +27,7 @@ func checkLogin(auth models.Login) string {
 
 	validToken, err := utils.GenerateJWT()
 	if err != nil {
-		log.Println("Error generate token.", err)
+		return "Error generate token."
 	}
 	return validToken
 }
