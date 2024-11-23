@@ -3,7 +3,6 @@ package handlers
 import (
 	"encoding/json"
 	"go-rest-api/models"
-	"log"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -24,15 +23,15 @@ func GetUsersById(w http.ResponseWriter, r *http.Request) {
 		}
 
 	}
-	http.Error(w, `{"error": "User not found"}`, http.StatusNotFound)
+	http.Error(w, "User not found", http.StatusNotFound)
 }
 
-func CreateUser(w http.ResponseWriter, r *http.Request){
+func CreateUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var us models.User
 	err := json.NewDecoder(r.Body).Decode(&us)
 	if err != nil {
-		log.Fatal(err)
+		http.Error(w, "Invalid JSON", http.StatusBadRequest)
 	}
 	models.Users = append(models.Users, us)
 	json.NewEncoder(w).Encode(models.Users)
@@ -44,13 +43,14 @@ func DeleteUsers(w http.ResponseWriter, r *http.Request) {
 	for i, item := range models.Users {
 		if item.Id == params["id"] {
 			models.Users = append(models.Users[:i], models.Users[i+1:]...)
-			break
+			json.NewEncoder(w).Encode(models.Users)
+			return
 		}
 	}
-	json.NewEncoder(w).Encode(models.Users)
+	http.Error(w, "User not found", http.StatusNotFound)
 }
 
-func PutUsers(w http.ResponseWriter, r *http.Request){
+func PutUsers(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-type", "application/json")
 	params := mux.Vars(r)
 
@@ -58,10 +58,10 @@ func PutUsers(w http.ResponseWriter, r *http.Request){
 
 	err := json.NewDecoder(r.Body).Decode(&us)
 	if err != nil {
-		log.Fatal(err)
+		http.Error(w, "Invalid JSON", http.StatusBadRequest)
 	}
-	for i, item := range models.Users{
-		if item.Id == params["id"]{
+	for i, item := range models.Users {
+		if item.Id == params["id"] {
 			us.Id = params["id"]
 			models.Users[i] = us
 			json.NewEncoder(w).Encode(models.Users)
@@ -71,4 +71,5 @@ func PutUsers(w http.ResponseWriter, r *http.Request){
 
 	http.Error(w, "User not found", http.StatusNotFound)
 }
+
 
