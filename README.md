@@ -72,7 +72,7 @@ Go installed (1.20+ recommended).
 Steps
 Clone the repository:
 
-git clone https://github.com/Role1776/Simple-auth-server.git
+git clone https://github.com/Role1776/go-rest-api.git
 cd go-rest-api
 Run the server:
 
